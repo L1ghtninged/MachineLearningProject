@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import time
 
-API_KEY = "GWuuGDawS9v78CGGDtURscJ5UotF2LiJ"
+API_KEY = "API_KEY"
 
 cities = [
     {"name": "Prague", "lat": 50.0755, "lon": 14.4378},
