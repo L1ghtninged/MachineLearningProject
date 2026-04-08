@@ -2,30 +2,52 @@ from playwright.sync_api import sync_playwright
 import pandas as pd
 import time
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
+import random
 
+# ====== MĚSTA ======
 cities = [
-    "prague","vienna","budapest","berlin","rome","paris"
+    "prague","vienna","budapest","berlin","paris","rome",
+    "barcelona","amsterdam","london","madrid","milan",
+    "munich","lisbon","copenhagen","stockholm","warsaw",
+    "dublin","brussels","oslo","helsinki","zurich"
 ]
+TARGET_PER_CITY = 800  # 20 měst → ~16 000 záznamů
 
-# různé sezóny
-dates = [
-    ("2026-01-15","2026-01-16"),  # zima
-    ("2026-04-10","2026-04-11"),  # jaro
-    ("2026-07-10","2026-07-11"),  # léto
-    ("2026-10-10","2026-10-11")   # podzim
-]
+# ====== GENEROVÁNÍ DAT ======
+def generate_dates():
+    dates = []
+
+    start = datetime(2026, 1, 1)
+    end = datetime(2026, 12, 31)
+
+    current = start
+
+    while current <= end:
+        stay_length = random.choice([1, 2, 3, 4])  # 🔥 delší pobyty
+        checkout = current + timedelta(days=stay_length)
+
+        dates.append((
+            current.strftime("%Y-%m-%d"),
+            checkout.strftime("%Y-%m-%d")
+        ))
+
+        current += timedelta(days=10)  # 🔥 méně requestů (rychlejší + stabilnější)
+
+    return dates
+
+dates = generate_dates()
 
 data = []
 
+# ====== FUNKCE ======
 def extract_number(text):
     if not text:
         return None
     text = text.replace("\xa0", "").replace(",", ".")
     match = re.search(r"\d+(\.\d+)?", text)
-    if match:
-        return float(match.group())
-    return None
+    return float(match.group()) if match else None
+
 
 def extract_price(text):
     if not text:
@@ -33,16 +55,16 @@ def extract_price(text):
 
     text = text.replace("\xa0", "").replace(" ", "")
 
-    # např. 3,450 nebo 12.500
     match = re.search(r"\d{1,3}(?:[.,]\d{3})+", text)
 
     if match:
-        num = match.group()
-        num = num.replace(",", "").replace(".", "")
+        num = match.group().replace(",", "").replace(".", "")
         return int(num)
 
     return None
 
+
+# ====== SCRAPER ======
 with sync_playwright() as p:
 
     browser = p.chromium.launch(headless=False)
@@ -52,13 +74,20 @@ with sync_playwright() as p:
     )
 
     page = context.new_page()
+    city_counts = {city: 0 for city in cities}
 
     for city in cities:
+
+        print(f"\n====== {city.upper()} ======")
+
         for checkin, checkout in dates:
+            if city_counts[city] >= TARGET_PER_CITY:
+                print("✔ Dostatek dat pro město")
+                break
 
-            print(f"\n--- {city} | {checkin} ---")
+            print(f"\n--- {checkin} → {checkout} ---")
 
-            for page_number in range(8):
+            for page_number in range(6):  # 🔥 lehce zvýšeno
 
                 offset = page_number * 25
 
@@ -77,18 +106,20 @@ with sync_playwright() as p:
                     f"&lang=en-us"
                 )
 
-                page.goto(url)
-
                 try:
+                    page.goto(url, timeout=25000)
                     page.wait_for_load_state("networkidle")
-                    page.wait_for_timeout(3000)
+                    time.sleep(2)
                 except:
-                    print("Timeout – skipping page")
-                    continue
+                    print("Timeout – skip")
+                    break
 
                 hotels = page.query_selector_all('[data-testid="property-card"]')
 
-                print("Hotels found:", len(hotels))
+                if not hotels:
+                    break
+
+                print("Hotels:", len(hotels))
 
                 for hotel in hotels:
 
@@ -97,77 +128,72 @@ with sync_playwright() as p:
                     rating = None
                     stars = None
                     distance_km = None
-                    breakfast_included = False
+                    breakfast = False
                     review_count = None
 
-                    # -------- NAME --------
-                    name_el = hotel.query_selector('[data-testid="title"]')
-                    if name_el:
-                        name = name_el.inner_text().strip()
+                    # NAME
+                    el = hotel.query_selector('[data-testid="title"]')
+                    if el:
+                        name = el.inner_text().strip()
 
-                    # -------- PRICE --------
-                    price_el = hotel.query_selector('[data-testid="price-and-discounted-price"]') \
-                               or hotel.query_selector('[data-testid="price"]')
+                    # PRICE
+                    el = hotel.query_selector('[data-testid="price-and-discounted-price"]') \
+                         or hotel.query_selector('[data-testid="price"]')
 
-                    if price_el:
-                        price = extract_price(price_el.inner_text())
+                    if el:
+                        price = extract_price(el.inner_text())
 
-                    # -------- RATING --------
+                    # RATING
                     rating_el = hotel.query_selector('[data-testid="review-score"]')
                     if rating_el:
                         rating = extract_number(rating_el.inner_text())
 
-                    # -------- STARS --------
-                    star_el = hotel.query_selector('[data-testid="rating-stars"]')
-                    if star_el:
-                        stars = len(star_el.query_selector_all("span"))
+                    # STARS
+                    el = hotel.query_selector('[data-testid="rating-stars"]')
+                    if el:
+                        stars = len(el.query_selector_all("span"))
 
-                    # -------- DISTANCE --------
-                    distance_el = hotel.query_selector('[data-testid="distance"]')
+                    # DISTANCE
+                    el = hotel.query_selector('[data-testid="distance"]')
+                    if el:
+                        txt = el.inner_text().lower()
+                        num = extract_number(txt)
 
-                    if distance_el:
-                        text = distance_el.inner_text().lower()
-                        number = extract_number(text)
+                        if num:
+                            if "km" in txt:
+                                distance_km = num
+                            elif "m" in txt:
+                                distance_km = num / 1000
 
-                        if number is not None:
-                            if "km" in text:
-                                distance_km = number
-                            elif "m" in text:
-                                distance_km = number / 1000
-
-                    # -------- BREAKFAST --------
-                    badges = hotel.query_selector_all("span")
-
-                    for b in badges:
-                        txt = b.inner_text().lower()
-                        if "breakfast" in txt:
-                            breakfast_included = True
+                    # BREAKFAST
+                    spans = hotel.query_selector_all("span")
+                    for s in spans:
+                        if "breakfast" in s.inner_text().lower():
+                            breakfast = True
                             break
 
-                    # -------- REVIEW COUNT --------
-                    review_el = hotel.query_selector('[data-testid="review-score"]')
+                    # REVIEW COUNT (🔥 opraveno – správný element)
+                    if rating_el:
+                        try:
+                            parent = rating_el.evaluate_handle("el => el.parentElement")
+                            txt = parent.inner_text().lower()
+                            match = re.search(r"(\d[\d,]*)\s+reviews", txt)
+                            if match:
+                                review_count = int(match.group(1).replace(",", ""))
+                        except:
+                            pass
 
-                    if review_el:
-                        parent = review_el.evaluate_handle("el => el.parentElement")
-                        text = parent.inner_text().lower()
-
-                        match = re.search(r"(\d[\d,]*)\s+reviews", text)
-
-                        if match:
-                            review_count = int(match.group(1).replace(",", ""))
-
-                    # -------- DATE FEATURES --------
+                    # DATE FEATURES
                     checkin_dt = datetime.strptime(checkin, "%Y-%m-%d")
                     checkout_dt = datetime.strptime(checkout, "%Y-%m-%d")
 
                     month = checkin_dt.month
-                    day_of_week = checkin_dt.weekday()
-                    is_weekend = 1 if day_of_week >= 5 else 0
+                    dow = checkin_dt.weekday()
+                    is_weekend = 1 if dow >= 5 else 0
                     stay_length = (checkout_dt - checkin_dt).days
 
-                    # -------- SAVE --------
+                    # SAVE
                     if price and rating:
-
                         data.append({
                             "city": city,
                             "hotel_name": name,
@@ -175,26 +201,22 @@ with sync_playwright() as p:
                             "rating": rating,
                             "stars": stars,
                             "distance_km": distance_km,
-                            "breakfast": breakfast_included,
+                            "breakfast": breakfast,
                             "review_count": review_count,
                             "month": month,
-                            "day_of_week": day_of_week,
+                            "day_of_week": dow,
                             "is_weekend": is_weekend,
                             "stay_length": stay_length
                         })
-
-                        print(city, name, price)
-
-                time.sleep(2)
+                        city_counts[city] += 1
+                time.sleep(1)
 
     browser.close()
 
-# -------- SAVE DATA --------
+# ====== SAVE ======
 df = pd.DataFrame(data)
-
-# odstranění prázdných hodnot
 df = df.dropna()
 
 df.to_csv("hotel_prices_final.csv", index=False)
 
-print("\nSaved records:", len(df))
+print("\nSaved:", len(df))
