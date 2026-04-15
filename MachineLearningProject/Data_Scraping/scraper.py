@@ -3,7 +3,6 @@ import pandas as pd
 import time
 import re
 from datetime import datetime, timedelta
-import random
 
 # ====== MĚSTA ======
 cities = [
@@ -12,6 +11,7 @@ cities = [
     "munich","lisbon","copenhagen","stockholm","warsaw",
     "dublin","brussels","oslo","helsinki","zurich"
 ]
+
 TARGET_PER_CITY = 800  # 20 měst → ~16 000 záznamů
 
 # ====== GENEROVÁNÍ DAT ======
@@ -24,15 +24,14 @@ def generate_dates():
     current = start
 
     while current <= end:
-        stay_length = random.choice([1, 2, 3, 4])  # 🔥 delší pobyty
-        checkout = current + timedelta(days=stay_length)
+        for stay_length in [1, 2, 3, 4]:                        # ← změna: všechny délky pobytu deterministicky
+            checkout = current + timedelta(days=stay_length)
+            dates.append((
+                current.strftime("%Y-%m-%d"),
+                checkout.strftime("%Y-%m-%d")
+            ))
 
-        dates.append((
-            current.strftime("%Y-%m-%d"),
-            checkout.strftime("%Y-%m-%d")
-        ))
-
-        current += timedelta(days=10)  # 🔥 méně requestů (rychlejší + stabilnější)
+        current += timedelta(days=10)
 
     return dates
 
@@ -87,7 +86,7 @@ with sync_playwright() as p:
 
             print(f"\n--- {checkin} → {checkout} ---")
 
-            for page_number in range(6):  # 🔥 lehce zvýšeno
+            for page_number in range(6):
 
                 offset = page_number * 25
 
@@ -172,7 +171,7 @@ with sync_playwright() as p:
                             breakfast = True
                             break
 
-                    # REVIEW COUNT (🔥 opraveno – správný element)
+                    # REVIEW COUNT
                     if rating_el:
                         try:
                             parent = rating_el.evaluate_handle("el => el.parentElement")
@@ -196,6 +195,8 @@ with sync_playwright() as p:
                     if price and rating:
                         data.append({
                             "city": city,
+                            "checkin": checkin,
+                            "checkout": checkout,
                             "hotel_name": name,
                             "price": price,
                             "rating": rating,

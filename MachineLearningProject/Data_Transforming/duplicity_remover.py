@@ -1,7 +1,7 @@
 import pandas as pd
 
-INPUT_FILE = "../data/events_merged.csv"
-OUTPUT_FILE = "../data/events_merged.csv"
+INPUT_FILE = "../data/event_counts.csv"
+OUTPUT_FILE = "../data/event_counts.csv"
 
 SUBSET_COLUMNS = None
 
