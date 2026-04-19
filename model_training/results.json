@@ -1,0 +1,31 @@
+{
+  "xgboost": {
+    "mae": 1027.029876929111,
+    "rmse": 4181.852369993994,
+    "r2": 0.9676311088051972
+  },
+  "random_forest": {
+    "mae": 1092.0981469691694,
+    "rmse": 2780.777318214564,
+    "r2": 0.9856872576482381
+  },
+  "features": [
+    "rating",
+    "stars",
+    "breakfast",
+    "log_distance",
+    "log_review_count",
+    "month",
+    "day_of_week",
+    "is_weekend",
+    "stay_length",
+    "week_of_year",
+    "event_count",
+    "high_event",
+    "city_encoded"
+  ],
+  "train_size": 12198,
+  "test_size": 3050,
+  "event_mean_threshold": 30.5771437940646,
+  "global_price_mean_log": 9.250050996039793
+}
