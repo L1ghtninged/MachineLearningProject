@@ -4,43 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde0864b-3a52-472b-aaa1-bc40014076ef" name="Changes" comment="Early model version">
-      <change afterPath="$PROJECT_DIR$/.idea/MachineLearningProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_training/hotel_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_training/testing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Scraping/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Scraping/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Scraping/events.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Scraping/events.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Scraping/events_safe.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Scraping/events_safe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Scraping/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Scraping/scraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/check.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/check.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/data_union.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/data_union.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/dataset_ml.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/dataset_ml.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/duplicity_remover.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/duplicity_remover.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/Data_Transforming/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/transform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/app/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/event_counts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/event_counts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/events.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/events.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/events_clean.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/events_clean.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/events_filtered.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/events_filtered.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/events_merged.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/events_merged.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/hotel_prices_final.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/hotel_prices_final.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/data/hotel_prices_old.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/hotel_prices_old.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/city_mean.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/city_mean.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/model_rf.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_rf.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/model_xgb.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_xgb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/results.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearningProject/model_training/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training/train.py" afterDir="false" />
+    <list default="true" id="fde0864b-3a52-472b-aaa1-bc40014076ef" name="Changes" comment="First App version">
+      <change afterPath="$PROJECT_DIR$/data/dataset.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/event_counts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Scraping/events.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Scraping/events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Scraping/events_safe.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Scraping/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Scraping/scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Transforming/check.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Transforming/data_union.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/data_union.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Transforming/duplicity_remover.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/duplicity_remover.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Transforming/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Transforming/transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/city_mean.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/hotel_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training/hotel_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/model_rf.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/model_xgb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training/testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/city_mean.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/city_mean.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/model_rf.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_rf.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/model_xgb.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_xgb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/results.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,25 +77,28 @@
     "Python.hynek.executor": "Run",
     "Python.merge.executor": "Run",
     "Python.scraper.executor": "Run",
+    "Python.testing.executor": "Run",
     "Python.train.executor": "Run",
     "Python.transform.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/School/C4a/MachineLearningProject/models"
+    "last_opened_file_path": "D:/School/C4a/MachineLearningProject/data"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\School\C4a\MachineLearningProject\data" />
+      <recent name="D:\School\C4a\MachineLearningProject\model_training" />
       <recent name="D:\School\C4a\MachineLearningProject\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\School\C4a\MachineLearningProject\models" />
       <recent name="D:\School\C4a\MachineLearningProject\MachineLearningProject\Data_Transforming" />
       <recent name="D:\School\C4a\MachineLearningProject\MachineLearningProject\model_training" />
       <recent name="D:\School\C4a\MachineLearningProject\MachineLearningProject\data" />
       <recent name="D:\School\C4a\MachineLearningProject\data" />
-      <recent name="D:\School\C4a\MachineLearningProject\Data_Scraping" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -167,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776407689198</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="First App version">
+      <option name="closed" value="true" />
+      <created>1776629246306</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1776629246306</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +172,7 @@
     <MESSAGE value="First APP UI" />
     <MESSAGE value="Hotel data scraping" />
     <MESSAGE value="Early model version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Early model version" />
+    <MESSAGE value="First App version" />
+    <option name="LAST_COMMIT_MESSAGE" value="First App version" />
   </component>
 </project>

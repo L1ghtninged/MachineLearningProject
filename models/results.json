@@ -1,15 +1,13 @@
 {
   "xgboost": {
-    "mae": 2013.6461181640625,
-    "rmse": 3046.162011449818,
-    "mape": 15.687504936197563,
-    "r2": 0.9828250408172607
+    "mae": 1027.029876929111,
+    "rmse": 4181.852369993994,
+    "r2": 0.9676311088051972
   },
   "random_forest": {
-    "mae": 2397.993452866267,
-    "rmse": 4402.625595235345,
-    "mape": 15.177669847368481,
-    "r2": 0.9641231803997373
+    "mae": 1092.0981469691694,
+    "rmse": 2780.777318214564,
+    "r2": 0.9856872576482381
   },
   "features": [
     "rating",
@@ -22,14 +20,12 @@
     "is_weekend",
     "stay_length",
     "week_of_year",
-    "is_holiday",
     "event_count",
-    "high_event_period",
-    "city_encoded",
-    "price_vs_city_mean"
+    "high_event",
+    "city_encoded"
   ],
   "train_size": 12198,
   "test_size": 3050,
   "event_mean_threshold": 30.5771437940646,
-  "global_price_mean": 14229.53607148713
+  "global_price_mean_log": 9.250050996039793
 }

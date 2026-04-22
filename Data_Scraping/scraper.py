@@ -12,9 +12,8 @@ cities = [
     "dublin","brussels","oslo","helsinki","zurich"
 ]
 
-TARGET_PER_CITY = 800  # 20 měst → ~16 000 záznamů
+TARGET_PER_CITY = 800
 
-# ====== GENEROVÁNÍ DAT ======
 def generate_dates():
     dates = []
 
@@ -24,7 +23,7 @@ def generate_dates():
     current = start
 
     while current <= end:
-        for stay_length in [1, 2, 3, 4]:                        # ← změna: všechny délky pobytu deterministicky
+        for stay_length in [1, 2, 3, 4]:
             checkout = current + timedelta(days=stay_length)
             dates.append((
                 current.strftime("%Y-%m-%d"),
@@ -39,7 +38,6 @@ dates = generate_dates()
 
 data = []
 
-# ====== FUNKCE ======
 def extract_number(text):
     if not text:
         return None
@@ -62,8 +60,6 @@ def extract_price(text):
 
     return None
 
-
-# ====== SCRAPER ======
 with sync_playwright() as p:
 
     browser = p.chromium.launch(headless=False)
@@ -77,14 +73,9 @@ with sync_playwright() as p:
 
     for city in cities:
 
-        print(f"\n====== {city.upper()} ======")
-
         for checkin, checkout in dates:
             if city_counts[city] >= TARGET_PER_CITY:
-                print("✔ Dostatek dat pro město")
                 break
-
-            print(f"\n--- {checkin} → {checkout} ---")
 
             for page_number in range(6):
 
@@ -110,7 +101,6 @@ with sync_playwright() as p:
                     page.wait_for_load_state("networkidle")
                     time.sleep(2)
                 except:
-                    print("Timeout – skip")
                     break
 
                 hotels = page.query_selector_all('[data-testid="property-card"]')
@@ -130,29 +120,24 @@ with sync_playwright() as p:
                     breakfast = False
                     review_count = None
 
-                    # NAME
                     el = hotel.query_selector('[data-testid="title"]')
                     if el:
                         name = el.inner_text().strip()
 
-                    # PRICE
                     el = hotel.query_selector('[data-testid="price-and-discounted-price"]') \
                          or hotel.query_selector('[data-testid="price"]')
 
                     if el:
                         price = extract_price(el.inner_text())
 
-                    # RATING
                     rating_el = hotel.query_selector('[data-testid="review-score"]')
                     if rating_el:
                         rating = extract_number(rating_el.inner_text())
 
-                    # STARS
                     el = hotel.query_selector('[data-testid="rating-stars"]')
                     if el:
                         stars = len(el.query_selector_all("span"))
 
-                    # DISTANCE
                     el = hotel.query_selector('[data-testid="distance"]')
                     if el:
                         txt = el.inner_text().lower()
@@ -164,14 +149,12 @@ with sync_playwright() as p:
                             elif "m" in txt:
                                 distance_km = num / 1000
 
-                    # BREAKFAST
                     spans = hotel.query_selector_all("span")
                     for s in spans:
                         if "breakfast" in s.inner_text().lower():
                             breakfast = True
                             break
 
-                    # REVIEW COUNT
                     if rating_el:
                         try:
                             parent = rating_el.evaluate_handle("el => el.parentElement")
@@ -182,7 +165,6 @@ with sync_playwright() as p:
                         except:
                             pass
 
-                    # DATE FEATURES
                     checkin_dt = datetime.strptime(checkin, "%Y-%m-%d")
                     checkout_dt = datetime.strptime(checkout, "%Y-%m-%d")
 
@@ -191,7 +173,6 @@ with sync_playwright() as p:
                     is_weekend = 1 if dow >= 5 else 0
                     stay_length = (checkout_dt - checkin_dt).days
 
-                    # SAVE
                     if price and rating:
                         data.append({
                             "city": city,
@@ -214,7 +195,6 @@ with sync_playwright() as p:
 
     browser.close()
 
-# ====== SAVE ======
 df = pd.DataFrame(data)
 df = df.dropna()
 

@@ -53,10 +53,6 @@ class HotelModel:
         return instance
 
     def get_event_count(self, city: str, checkin) -> int:
-        """
-        Vrátí počet eventů pro dané město a datum check-inu.
-        Pokud dataset není načten nebo kombinace neexistuje, vrátí 0.
-        """
         if self._events is None:
             return 0
 
@@ -86,18 +82,14 @@ class HotelModel:
         event_count: int,
     ) -> float:
 
-        # ===== TRANSFORMACE =====
         log_distance     = np.log1p(distance_km)
         log_review_count = np.log1p(review_count)
         is_weekend       = int(day_of_week >= 5)
 
-        # ===== CITY ENCODING =====
         city_encoded = self._city_mean.get(city, self._global_price_mean_log)
 
-        # ===== EVENT FEATURE =====
         high_event = int(event_count > self._event_mean) if self._event_mean else 0
 
-        # ===== FEATURE VECTOR =====
         features = [[
             rating,
             stars,
@@ -114,7 +106,6 @@ class HotelModel:
             city_encoded
         ]]
 
-        # ===== PREDIKCE (LOG → REAL) =====
         pred_log   = self._model.predict(features)[0]
         pred_price = np.expm1(pred_log)
 
