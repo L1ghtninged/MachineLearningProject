@@ -20,7 +20,13 @@ git clone https://github.com/L1ghtninged/MachineLearningProject
 **2. Nainstalování knihoven/závislostí**
 ```
 pip install streamlit xgboost scikit-learn pandas numpy holidays playwright
+
 ```
+pro streamlit případně:
+```
+python -m pip install streamlit
+```
+
 
 **3. Pro spuštění booking scraperu**
 ```
@@ -32,6 +38,10 @@ playwright install chromium
 ```
 streamlit run app/app.py
 ```
+nebo
+```
+python -m streamlit run app/app.py
+```
 
 Aplikace se otevře v prohlížeči na adrese `http://localhost:8501`.
 
@@ -39,3 +49,6 @@ Aplikace se otevře v prohlížeči na adrese `http://localhost:8501`.
 
 ## Trénování modelu
 Jupyter notebook: MachineLearningProject.ipynb
+
+
+Train script: model_training/train.py
