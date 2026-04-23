@@ -19,7 +19,6 @@ class HotelModel:
         "week_of_year",
         "event_count",
         "city_encoded",
-        "city_dist_inter"
     ]
 
     def __init__(self, model_path: str, city_mean_path: str):

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fde0864b-3a52-472b-aaa1-bc40014076ef" name="Changes" comment="Final updated version">
-      <change afterPath="$PROJECT_DIR$/src/models/city_mean.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/event_counts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/model_xgb.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/results.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model_training/hotel_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_training/hotel_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776980150257</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Final updated version">
+      <option name="closed" value="true" />
+      <created>1776982272647</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1776982272647</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
