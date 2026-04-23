@@ -1,0 +1,30 @@
+{
+    "metrics": {
+        "xgboost": {
+            "mae": 692.2006498662262,
+            "rmse": 1413.4149862546876,
+            "r2": 0.7891010598939395
+        },
+        "random_forest": {
+            "mae": 673.4236658849856,
+            "rmse": 1406.058494733402,
+            "r2": 0.7912907051797703
+        }
+    },
+    "features": [
+        "rating",
+        "stars",
+        "has_stars",
+        "breakfast",
+        "log_distance",
+        "log_review_count",
+        "month",
+        "day_of_week",
+        "is_weekend",
+        "stay_length",
+        "week_of_year",
+        "event_count",
+        "city_encoded"
+    ],
+    "global_mean_log": 8.377299109505381
+}

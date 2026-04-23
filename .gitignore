@@ -15,7 +15,7 @@ venv/
 *.h5
 *.csv
 *.json
-src/models/
+src/models/.gitkeep
 
 # OS bordel
 .DS_Store
