@@ -71,7 +71,7 @@ today = datetime.now().date()
 MAX_STAY = 5
 END_OF_2026 = datetime(2026, 12, 31).date()
 
-tab1, tab2, tab3 = st.tabs(["Základní predikce", "Srovnávač parametrů"])
+tab1, tab2 = st.tabs(["Základní predikce", "Srovnávač parametrů"])
 
 with tab1:
     st.header("Odhad ceny pro konkrétní pobyt")
