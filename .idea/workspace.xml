@@ -4,41 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde0864b-3a52-472b-aaa1-bc40014076ef" name="Changes" comment="Final version">
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/dataset.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/events.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MachineLearningProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MachineLearningProject.iml" afterDir="false" />
+    <list default="true" id="fde0864b-3a52-472b-aaa1-bc40014076ef" name="Changes" comment="Final updated version">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Scraping/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Scraping/events.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Scraping/scraper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/data_union.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/dataset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/dataset_ml.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/duplicity_remover.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/merge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Transforming/transform.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/dataset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/event_counts.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/events.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/events_clean.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/events_filtered.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/events_merged.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hotel_prices_final.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hotel_prices_old.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_training/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_training/hotel_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_training/testing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_training/train.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/city_mean.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/event_counts.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model_rf.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model_xgb.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/results.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +155,31 @@
       <option name="project" value="LOCAL" />
       <updated>1776886911005</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Final updated version">
+      <option name="closed" value="true" />
+      <created>1776980044771</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1776980044771</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Final updated version">
+      <option name="closed" value="true" />
+      <created>1776980123758</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1776980123758</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Final updated version">
+      <option name="closed" value="true" />
+      <created>1776980150257</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776980150257</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -197,6 +189,7 @@
     <MESSAGE value="Early model version" />
     <MESSAGE value="First App version" />
     <MESSAGE value="Final version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final version" />
+    <MESSAGE value="Final updated version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final updated version" />
   </component>
 </project>

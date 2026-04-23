@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+.env/
+
+# IDE
+.idea/
+
+# Data / modely
+*.pkl
+*.joblib
+*.h5
+*.csv
+*.json
+src/models/
+
+# OS bordel
+.DS_Store
