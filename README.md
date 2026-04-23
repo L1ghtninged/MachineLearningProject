@@ -32,7 +32,8 @@ python -m pip install streamlit
 ```
 playwright install chromium
 ```
-
+## Vytrénování modelu
+Vytrénujte model v google colabu a pak soubory vložte do složky models
 ## Spuštění aplikace
 
 ```
