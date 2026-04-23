@@ -14,7 +14,7 @@ Webová aplikace pro predikci cen hotelů v evropských městech. Využívá mod
 
 **1. Stáhnutí/klonování projektu**
 ```
-git clone https://github.com/projekt
+git clone https://github.com/L1ghtninged/MachineLearningProject
 ```
 
 **2. Nainstalování knihoven/závislostí**
