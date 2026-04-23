@@ -4,7 +4,6 @@ import time
 import re
 from datetime import datetime, timedelta
 
-# ====== MĚSTA ======
 cities = [
     "prague","vienna","budapest","berlin","paris","rome",
     "barcelona","amsterdam","london","madrid","milan",
