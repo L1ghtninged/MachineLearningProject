@@ -127,8 +127,6 @@ metrics_rf = evaluate("RF Test", y_test, rf_pred)
 fi = pd.Series(xgb_model.feature_importances_, index=FEATURES)
 fi = fi.sort_values(ascending=False)
 
-for f, v in fi.items():
-    print(f"{f:<20} {v:.4f}")
 
 
 xgb_model.save_model("model_xgb.json")
