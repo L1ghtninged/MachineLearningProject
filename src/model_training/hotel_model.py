@@ -92,8 +92,6 @@ class HotelModel:
 
         city_encoded = self._city_mean.get(city_key, self._global_mean_log)
 
-        city_dist_inter = city_encoded * log_distance
-
         features = [[
             rating,
             stars,
@@ -108,7 +106,6 @@ class HotelModel:
             week_of_year,
             event_count,
             city_encoded,
-            city_dist_inter
         ]]
 
         pred_log = self._model.predict(features)[0]
