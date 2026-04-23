@@ -86,7 +86,7 @@ def evaluate(name, y_true_log, y_pred_log):
     return {"mae": float(mae), "rmse": float(rmse), "r2": float(r2)}
 
 xgb_model = xgb.XGBRegressor(
-    n_estimators=3000,
+    n_estimators=2000,
     learning_rate=0.03,
     max_depth=8,
     subsample=0.8,
